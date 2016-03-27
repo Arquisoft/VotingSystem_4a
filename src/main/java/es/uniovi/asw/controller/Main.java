@@ -7,16 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 public class Main {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-  @RequestMapping("/")
-  public ModelAndView landing(Model model) {
-    LOG.info("Landing page access");
-    return new ModelAndView("landing");
-  }
-  
+	@RequestMapping("/")
+	public ModelAndView landing(Model model) {
+		logger.info("Landing page access");
+		return new ModelAndView("landing");
+	}
+
 }
