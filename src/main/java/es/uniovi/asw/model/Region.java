@@ -21,7 +21,6 @@ public class Region implements Serializable {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private Election election;
 
 	@OneToMany(mappedBy = "region", cascade = { CascadeType.ALL })

@@ -29,7 +29,6 @@ public class Election implements Serializable {
 	private ElectionDateTime electionDateTime;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private ElectionCall electionCall;
 
 	@OneToMany(mappedBy = "election", cascade = { CascadeType.ALL })

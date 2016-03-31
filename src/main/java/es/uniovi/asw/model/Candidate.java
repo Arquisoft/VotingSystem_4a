@@ -15,7 +15,6 @@ public class Candidate extends Candidature {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private CandidatureList candidatureList;
 
 	public Candidate() {}

@@ -16,11 +16,9 @@ public class Vote implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private VotingPlace votingPlace;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private Candidature candidature;
 
 	public Vote() {}

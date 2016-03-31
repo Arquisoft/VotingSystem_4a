@@ -21,11 +21,10 @@ public class District implements Serializable {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private Region region;
 
 	@OneToMany(mappedBy = "district", cascade = { CascadeType.ALL })
-	private Set<VotingPlace> votingPlaces = new HashSet<>();
+	private Set<VotingPlace> votingPlaces = new HashSet<VotingPlace>();
 
 	@OneToMany(mappedBy = "district", cascade = { CascadeType.ALL })
 	private Set<Candidature> candidatures = new HashSet<Candidature>();

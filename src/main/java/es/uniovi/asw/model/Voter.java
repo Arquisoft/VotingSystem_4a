@@ -31,7 +31,6 @@ public class Voter implements Serializable {
 	private String password;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private VotingPlace votingPlace;
 
 	public Voter() {}

@@ -21,7 +21,6 @@ public class VotingPlace implements Serializable {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private District district;
 
 	@OneToMany(mappedBy = "votingPlace", cascade = { CascadeType.ALL })

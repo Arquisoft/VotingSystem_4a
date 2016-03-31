@@ -19,7 +19,6 @@ public abstract class Candidature implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
 	private District district;
 
 	@OneToMany(mappedBy = "candidature", cascade = { CascadeType.ALL })
