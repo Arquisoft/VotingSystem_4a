@@ -6,13 +6,11 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
+ * ElectionDateTime
  * Created by ivan on 31/03/16.
  */
 @Embeddable
 public class ElectionDateTime {
-
-	@Column(nullable = false)
-	private Date date;
 
 	@Column(nullable = false)
 	private Time startTime;
@@ -22,18 +20,9 @@ public class ElectionDateTime {
 
 	public ElectionDateTime() {}
 
-	public ElectionDateTime(Date date, Time startTime, Time endTime) {
-		this.date = date;
+	public ElectionDateTime(Time startTime, Time endTime) {
 		this.startTime = startTime;
 		this.endTime = endTime;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public Time getStartTime() {
@@ -59,16 +48,14 @@ public class ElectionDateTime {
 
 		ElectionDateTime that = (ElectionDateTime) o;
 
-		if (!getDate().equals(that.getDate())) return false;
-		if (!getStartTime().equals(that.getStartTime())) return false;
-		return getEndTime().equals(that.getEndTime());
+		return getStartTime() != null ? getStartTime().equals(that.getStartTime()) : that.getStartTime() == null && (getEndTime() != null ? getEndTime().equals(that.getEndTime()) : that.getEndTime() == null);
+
 	}
 
 	@Override
 	public int hashCode() {
-		int result = getDate().hashCode();
-		result = 31 * result + getStartTime().hashCode();
-		result = 31 * result + getEndTime().hashCode();
+		int result = getStartTime() != null ? getStartTime().hashCode() : 0;
+		result = 31 * result + (getEndTime() != null ? getEndTime().hashCode() : 0);
 		return result;
 	}
 }

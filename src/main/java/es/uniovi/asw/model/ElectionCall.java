@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * ElectionCall
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -69,4 +70,21 @@ public class ElectionCall implements Serializable {
 		this.description = description;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof ElectionCall)) return false;
+
+		ElectionCall that = (ElectionCall) o;
+
+		return getName() != null ? getName().equals(that.getName()) : that.getName() == null && (getDescription() != null ? getDescription().equals(that.getDescription()) : that.getDescription() == null);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getName() != null ? getName().hashCode() : 0;
+		result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+		return result;
+	}
 }

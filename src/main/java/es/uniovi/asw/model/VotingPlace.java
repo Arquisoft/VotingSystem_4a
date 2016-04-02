@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * VotingPlace
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -85,5 +86,21 @@ public class VotingPlace implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof VotingPlace)) return false;
+
+		VotingPlace that = (VotingPlace) o;
+
+		return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return getName() != null ? getName().hashCode() : 0;
 	}
 }

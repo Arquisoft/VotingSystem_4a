@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * District
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -85,5 +86,21 @@ public class District implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof District)) return false;
+
+		District district = (District) o;
+
+		return getName() != null ? getName().equals(district.getName()) : district.getName() == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return getName() != null ? getName().hashCode() : 0;
 	}
 }

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Election
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -93,4 +94,22 @@ public class Election implements Serializable {
 		this.electionDateTime = electionDateTime;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Election)) return false;
+
+		Election election = (Election) o;
+
+		return getName() != null ? getName().equals(election.getName()) : election.getName() == null && (getDescription() != null ? getDescription().equals(election.getDescription()) : election.getDescription() == null && (getElectionDateTime() != null ? getElectionDateTime().equals(election.getElectionDateTime()) : election.getElectionDateTime() == null));
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getName() != null ? getName().hashCode() : 0;
+		result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+		result = 31 * result + (getElectionDateTime() != null ? getElectionDateTime().hashCode() : 0);
+		return result;
+	}
 }

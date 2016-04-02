@@ -3,6 +3,7 @@ package es.uniovi.asw.model;
 import javax.persistence.*;
 
 /**
+ * Candidate
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -37,5 +38,21 @@ public class Candidate extends Candidature {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Candidate)) return false;
+
+		Candidate candidate = (Candidate) o;
+
+		return getName() != null ? getName().equals(candidate.getName()) : candidate.getName() == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return getName() != null ? getName().hashCode() : 0;
 	}
 }

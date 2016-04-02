@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * Voter
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -27,7 +28,6 @@ public class Voter implements Serializable {
 	@Column(nullable = false)
 	private Long code;
 
-	@Column(nullable = true)
 	private String password;
 
 	@ManyToOne
@@ -94,5 +94,24 @@ public class Voter implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Voter)) return false;
+
+		Voter voter = (Voter) o;
+
+		return getName() != null ? getName().equals(voter.getName()) : voter.getName() == null && (getEmail() != null ? getEmail().equals(voter.getEmail()) : voter.getEmail() == null && (getNif() != null ? getNif().equals(voter.getNif()) : voter.getNif() == null));
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getName() != null ? getName().hashCode() : 0;
+		result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+		result = 31 * result + (getNif() != null ? getNif().hashCode() : 0);
+		return result;
 	}
 }

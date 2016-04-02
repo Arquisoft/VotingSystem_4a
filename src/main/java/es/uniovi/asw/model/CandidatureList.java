@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * CandidatureList
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -47,5 +48,21 @@ public class CandidatureList extends Candidature {
 
 	public void setListName(String listName) {
 		this.listName = listName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof CandidatureList)) return false;
+
+		CandidatureList that = (CandidatureList) o;
+
+		return getListName() != null ? getListName().equals(that.getListName()) : that.getListName() == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return getListName() != null ? getListName().hashCode() : 0;
 	}
 }
