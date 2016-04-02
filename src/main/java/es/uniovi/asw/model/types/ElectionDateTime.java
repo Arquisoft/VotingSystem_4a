@@ -2,7 +2,6 @@ package es.uniovi.asw.model.types;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.sql.Date;
 import java.sql.Time;
 
 /**
