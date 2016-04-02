@@ -3,7 +3,6 @@ package es.uniovi.asw.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.io.Serializable;
 
 /**
  * ReferendumOption
@@ -11,7 +10,7 @@ import java.io.Serializable;
  */
 @Entity
 @DiscriminatorValue("ReferendumOption")
-public class ReferendumOption {
+public class ReferendumOption extends Candidature {
 
 	private static final long serialVersionUID = -1872697315315973327L;
 

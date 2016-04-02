@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.util.Calendar;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -107,7 +106,6 @@ public class ElectionCallTest {
 
 	@Test
 	public void getElections() throws Exception {
-		Election election = createElection();
 		addElection();
 
 		ElectionCall fetchedElectionCall = electionCallRepository.findOne(electionCall.getId());
