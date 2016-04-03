@@ -14,8 +14,8 @@ public class Main {
 
 	@RequestMapping("/")
 	public ModelAndView landing(Model model) {
-		logger.info("Landing page access");
-		return new ModelAndView("landing");
+		logger.info("Index page access");
+		return new ModelAndView("index");
 	}
 
 }
