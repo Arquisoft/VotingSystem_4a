@@ -9,8 +9,5 @@ Voting System
 
 # Authors
 
-* Jose Labra
-
-
-
-
+* Ricardo Suárez Rodríguez
+* Iván Modroño Álvarez
