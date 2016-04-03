@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * Vote
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -41,5 +42,14 @@ public class Vote implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Vote{" +
+				"id=" + id +
+				", votingPlace=" + votingPlace +
+				", candidature=" + candidature +
+				'}';
 	}
 }

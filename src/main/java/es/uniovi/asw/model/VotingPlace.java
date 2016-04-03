@@ -25,10 +25,10 @@ public class VotingPlace implements Serializable {
 	private District district;
 
 	@OneToMany(mappedBy = "votingPlace", cascade = { CascadeType.ALL })
-	private Set<Voter> voters = new HashSet<Voter>();
+	private Set<Voter> voters = new HashSet<>();
 
 	@OneToMany(mappedBy = "votingPlace", cascade = { CascadeType.ALL })
-	private Set<Vote> votes = new HashSet<Vote>();
+	private Set<Vote> votes = new HashSet<>();
 
 	public VotingPlace() {}
 
@@ -102,5 +102,14 @@ public class VotingPlace implements Serializable {
 	@Override
 	public int hashCode() {
 		return getName() != null ? getName().hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "VotingPlace{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", district=" + district +
+				'}';
 	}
 }

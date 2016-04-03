@@ -18,7 +18,7 @@ public class CandidatureList extends Candidature {
 	private String listName;
 
 	@OneToMany(mappedBy = "candidatureList", cascade = {CascadeType.ALL })
-	private Set<Candidate> candidates = new HashSet<Candidate>();
+	private Set<Candidate> candidates = new HashSet<>();
 
 	public CandidatureList() {}
 
@@ -64,5 +64,12 @@ public class CandidatureList extends Candidature {
 	@Override
 	public int hashCode() {
 		return getListName() != null ? getListName().hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "CandidatureList{" +
+				"listName='" + listName + '\'' +
+				'}';
 	}
 }

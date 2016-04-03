@@ -29,6 +29,7 @@ public class Voter implements Serializable {
 	private Long code;
 
 	private String password;
+	private boolean voted;
 
 	@ManyToOne
 	private VotingPlace votingPlace;
@@ -96,6 +97,14 @@ public class Voter implements Serializable {
 		this.password = password;
 	}
 
+	public boolean isVoted() {
+		return voted;
+	}
+
+	public void setVoted(boolean voted) {
+		this.voted = voted;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -113,5 +122,19 @@ public class Voter implements Serializable {
 		result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
 		result = 31 * result + (getNif() != null ? getNif().hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Voter{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", nif='" + nif + '\'' +
+				", code=" + code +
+				", password='" + password + '\'' +
+				", voted=" + voted +
+				", votingPlace=" + votingPlace +
+				'}';
 	}
 }

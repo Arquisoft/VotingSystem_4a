@@ -55,4 +55,12 @@ public class Candidate extends Candidature {
 	public int hashCode() {
 		return getName() != null ? getName().hashCode() : 0;
 	}
+
+	@Override
+	public String toString() {
+		return "Candidate{" +
+				"name='" + name + '\'' +
+				", candidatureList=" + candidatureList +
+				'}';
+	}
 }

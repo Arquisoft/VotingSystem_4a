@@ -33,7 +33,7 @@ public class Election implements Serializable {
 	private ElectionCall electionCall;
 
 	@OneToMany(mappedBy = "election", cascade = { CascadeType.ALL })
-	private Set<Region> regions = new HashSet<Region>();
+	private Set<Region> regions = new HashSet<>();
 
 	public Election() {}
 
@@ -111,5 +111,16 @@ public class Election implements Serializable {
 		result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
 		result = 31 * result + (getElectionDateTime() != null ? getElectionDateTime().hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Election{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", electionDateTime=" + electionDateTime +
+				", electionCall=" + electionCall +
+				'}';
 	}
 }

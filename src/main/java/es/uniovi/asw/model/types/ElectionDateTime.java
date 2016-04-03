@@ -57,4 +57,12 @@ public class ElectionDateTime {
 		result = 31 * result + (getEndTime() != null ? getEndTime().hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "ElectionDateTime{" +
+				"startTime=" + startTime +
+				", endTime=" + endTime +
+				'}';
+	}
 }

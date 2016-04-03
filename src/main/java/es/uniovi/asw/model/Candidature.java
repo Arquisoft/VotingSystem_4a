@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Candidature
  * Created by ivan on 29/03/16.
  */
 @Entity
@@ -22,7 +23,7 @@ public abstract class Candidature implements Serializable {
 	private District district;
 
 	@OneToMany(mappedBy = "candidature", cascade = { CascadeType.ALL })
-	private Set<Vote> votes = new HashSet<Vote>();
+	private Set<Vote> votes = new HashSet<>();
 
 	public Candidature() {}
 
@@ -52,5 +53,13 @@ public abstract class Candidature implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Candidature{" +
+				"id=" + id +
+				", district=" + district +
+				'}';
 	}
 }

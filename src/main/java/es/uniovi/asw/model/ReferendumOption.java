@@ -46,4 +46,11 @@ public class ReferendumOption extends Candidature {
 	public int hashCode() {
 		return getOption() != null ? getOption().hashCode() : 0;
 	}
+
+	@Override
+	public String toString() {
+		return "ReferendumOption{" +
+				"option='" + option + '\'' +
+				'}';
+	}
 }
