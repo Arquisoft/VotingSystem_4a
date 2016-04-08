@@ -3,6 +3,8 @@ package es.uniovi.asw.steps;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+import cucumber.api.java.es.Cuando;
+import cucumber.api.java.es.Entonces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
@@ -17,14 +19,12 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import es.uniovi.asw.Application;
 
 @ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
-public class LandingSteps {
+public class IndexSteps {
 
 	@Autowired
 	protected WebApplicationContext context;
@@ -35,20 +35,20 @@ public class LandingSteps {
 	@Value("${local.server.port}")
 	protected int port;
 
-	@When("^the client calls /$")
-	public void the_client_calls() throws Throwable {
+	@Cuando("^el cliente llama a /$")
+	public void el_cliente_llama_a() throws Throwable {
 		Assert.notNull(context);
 		this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
 		result = mvc.perform(get("/")).andReturn();
 	}
 
-	@Then("^the client receives status code of (\\d+)$")
-	public void the_client_receives_status_code_of(int status) throws Throwable {
+	@Entonces("^el cliente recibe el código de estado (\\d+)$")
+	public void el_cliente_recibe_el_código_de_estado(int status) throws Throwable {
 		assertThat(result.getResponse().getStatus(), is(status));
 	}
 
-	@Then("^the client receives the string \"([^\"]*)\"$")
-	public void the_client_receives_the_string(String str) throws Throwable {
+	@Entonces("^el cliente recibe la cadena \"([^\"]*)\"$")
+	public void el_cliente_recibe_la_cadena(String str) throws Throwable {
 		assertThat(result.getResponse().getContentAsString(),
 				containsString(str));
 	}
