@@ -9,4 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ElectionCallRepository extends CrudRepository<ElectionCall, Long> {
 
+	ElectionCall findByName(String name);
+
 }
