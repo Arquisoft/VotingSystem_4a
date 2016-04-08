@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.uniovi.asw.dbupdate.RegisterVote;
+import es.uniovi.asw.dbupdate.ports.verifiers.VoteVerifier;
 import es.uniovi.asw.dbupdate.repositories.VoteRepository;
 import es.uniovi.asw.model.Vote;
 import es.uniovi.asw.util.VoteException;
@@ -20,7 +21,7 @@ public class RegisterVoteP implements RegisterVote {
 	@Override
 	public void registerVote(Vote vote) throws VoteException {
 
-		// No es necesario verificar el voto (confidencialidad)
+		VoteVerifier.verify(vote);
 		voteRepository.save(vote);
 
 	}
