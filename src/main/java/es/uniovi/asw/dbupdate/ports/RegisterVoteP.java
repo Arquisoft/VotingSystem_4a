@@ -20,6 +20,7 @@ public class RegisterVoteP implements RegisterVote {
 
 	@Override
 	public void registerVote(Vote vote) throws VoteException {
+		
 		VoteVerifier.verify(vote, voteRepository);
 		voteRepository.save(vote);
 
