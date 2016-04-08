@@ -1,9 +1,9 @@
 package es.uniovi.asw.votingmanager.ports;
 
 /**
- * GetParametersP
+ * GetVoterR
  * Created by ivan on 2/04/16.
  */
-public class GetParametersP {
+public class GetVoterR {
 
 }

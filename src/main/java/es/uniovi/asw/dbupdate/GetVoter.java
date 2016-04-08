@@ -1,4 +1,4 @@
-package es.uniovi.asw.votingmanager;
+package es.uniovi.asw.dbupdate;
 
 /**
  * GetVoter

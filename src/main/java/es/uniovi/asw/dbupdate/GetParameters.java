@@ -1,7 +1,7 @@
-package es.uniovi.asw.votingmanager;
+package es.uniovi.asw.dbupdate;
 
 /**
- * GetParametersVMImpl
+ * GetParameters
  * Created by ivan on 2/04/16.
  */
 public interface GetParameters {
