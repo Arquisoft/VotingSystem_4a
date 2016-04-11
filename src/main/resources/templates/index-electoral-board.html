@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" href="../static/css/menu.css"
+	th:href="@{/css/menu.css}">
+</head>
+<body>
+	<h1>Voting System!</h1>
+	<p>Welcome to our simple, intuitive and effective voting system.</p>
+	<nav id="colorNav">
+
+		<ul>
+			<li class="green"><a href="#" class="glyphicon glyphicon-home"></a>
+				<ul>
+					<li><a href="../templates/index.html">Home</a></li>
+					<li><a href="#">Dropdown item 2</a></li>
+					<!-- More dropdown options -->
+				</ul></li>
+			<li class="blue"><a href="#" class="glyphicon glyphicon-user"></a>
+				<ul>
+					<li><a href="#">Voto presencial</a></li>
+
+				</ul></li>
+			<li class="red"><a href="#" class="glyphicon glyphicon-cog"></a>
+				<ul>
+					<li><a href="#">Crear nuevas elecciones</a></li>
+
+					<!-- More dropdown options -->
+				</ul></li>
+
+			<li class="yellow"><a href="#"
+				class="glyphicon glyphicon-info-sign"></a>
+				<ul>
+					<li><a href="#">Acerca de Voting System</a></li>
+
+					<!-- More dropdown options -->
+				</ul></li>
+			<!-- More menu items -->
+		</ul>
+	</nav>
+</body>
+</html>
