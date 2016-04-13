@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	th:ref="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Varela+Round'
+	th:ref='http://fonts.googleapis.com/css?family=Varela+Round'
+	rel='stylesheet' type='text/css'>
+<link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="../static/css/button.css" th:href="@{/css/button.css}">
+
+<script src="../static/webjars/jquery/2.1.4"></script>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+	<h1>Voting System</h1>
+	<div class="text-center">
+		<h2>Comprobación de votante.</h2>
+		<form th:action="@{/check-voter}" method="post">
+			<input type="text" name="voterEmail" />
+			<button type="submit" value="Check voter" class="myButton">Check</button>
+		</form>
+
+		<p>
+			¿Ha votado ya este usuario?: <span th:text="${hasVote}"></span>
+		</p>
+	</div>
+
+</body>
+<footer>
+	<a href="../templates/index-electoral-board.html" class="glyphicon glyphicon-home">Back to menu.</a>
+</footer>
+</html>
