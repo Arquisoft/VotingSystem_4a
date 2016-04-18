@@ -41,8 +41,8 @@ public class ModelTest {
 		r.addDistrict(new District("Unica"));
 		
 
-		assertEquals(1, e.getRegions());
-		assertEquals(1, r.getDistricts()); // Circunscripcion unica
+		assertEquals(1, e.getRegions().size());
+		assertEquals(1, r.getDistricts().size()); // Circunscripcion unica
 		assertNotNull(e);
 
 	}
