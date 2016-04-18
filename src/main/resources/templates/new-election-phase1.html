@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
 	<title>¡Comencemos! - Formoid jquery form</title>
@@ -10,8 +10,8 @@
 
 
 <!-- Start Formoid form-->
-<link rel="stylesheet" href="new-election_files/formoid1/formoid-solid-blue.css" type="text/css" />
-<script type="text/javascript" src="new-election_files/formoid1/jquery.min.js"></script>
+<link rel="stylesheet" th:href="../static/formoid1/formoid-solid-blue.css" type="text/css" />
+<script type="text/javascript" th:src="../static/formoid1/jquery.min.js"></script>
 <form class="formoid-solid-blue" style="background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;max-width:480px;min-width:150px" method="post"><div class="title"><h2>¡Comencemos!</h2></div>
 	<div class="element-input" title="asdfadsf"><label class="title"><span class="required">*</span></label><div class="item-cont"><input class="large" type="text" name="input" required="required" placeholder="Nombre de convocatoria"/><span class="icon-place"></span></div></div>
 	<div class="element-select" title="Nº de elecciones que tendrá la convocatoria"><label class="title"><span class="required">*</span></label><div class="item-cont"><div class="medium"><span><select name="select" required="required">
@@ -19,7 +19,7 @@
 		<option value="Una elección">Una elección</option>
 		<option value="Dos elecciones">Dos elecciones</option>
 		<option value="Tres elecciones">Tres elecciones</option></select><i></i><span class="icon-place"></span></span></div></div></div>
-<div class="submit"><input type="submit" value="Continuar"/></div></form><p class="frmd"><a href="http://formoid.com/v29.php">jquery form</a> Formoid.com 2.9</p><script type="text/javascript" src="new-election_files/formoid1/formoid-solid-blue.js"></script>
+<div class="submit"><input type="submit" value="Continuar"/></div></form><p class="frmd"><a href="http://formoid.com/v29.php">jquery form</a> Formoid.com 2.9</p><script type="text/javascript" src="../static/formoid1/formoid-solid-blue.js"></script>
 <!-- Stop Formoid form-->
 
 
