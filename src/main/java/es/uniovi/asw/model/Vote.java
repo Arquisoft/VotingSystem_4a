@@ -1,5 +1,7 @@
 package es.uniovi.asw.model;
 
+import es.uniovi.asw.model.types.VoteKey;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * Created by ivan on 29/03/16.
  */
 @Entity
+@IdClass(VoteKey.class)
 public class Vote implements Serializable {
 
 	private static final long serialVersionUID = -5096934069175328173L;
@@ -23,6 +26,16 @@ public class Vote implements Serializable {
 	private Candidature candidature;
 
 	public Vote() {}
+
+	public Vote(VotingPlace votingPlace, Candidature candidature) {
+
+		this.votingPlace = votingPlace;
+		this.candidature = candidature;
+
+		votingPlace.addVote(this);
+		candidature.addVote(this);
+
+	}
 
 	public VotingPlace getVotingPlace() {
 		return votingPlace;
