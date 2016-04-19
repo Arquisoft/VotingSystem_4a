@@ -9,4 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface VotingPlaceRepository extends CrudRepository<VotingPlace, Long> {
 
+	VotingPlace findByName(String name);
+
 }

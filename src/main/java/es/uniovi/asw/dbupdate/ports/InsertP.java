@@ -27,10 +27,12 @@ public class InsertP implements Insert {
 
 	@Autowired
 	private DistrictRepository districtRepository;
-	@Qualifier("candidatureRepository")
 
 	@Autowired
 	private CandidatureRepository candidatureRepository;
+
+	@Autowired
+	private VotingPlaceRepository placeRepository;
 
 
 	@Override
@@ -79,4 +81,15 @@ public class InsertP implements Insert {
 		district.addCandidature(referendumOption);
 		districtRepository.save(district);
 	}
+
+	public void insertVotingPlace(Long idDistrict, VotingPlace votingPlace) throws ParametersException {
+		VotingPlaceVerifier.verify(votingPlace, placeRepository);
+
+		District district = districtRepository.findOne(idDistrict);
+		DistrictVerifier.verify(district, districtRepository);
+
+		district.addVotingPlace(votingPlace);
+		districtRepository.save(district);
+	}
+
 }

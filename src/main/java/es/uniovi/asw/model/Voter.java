@@ -97,7 +97,7 @@ public class Voter implements Serializable {
 		this.password = password;
 	}
 
-	public boolean isVoted() {
+	public boolean hasVoted() {
 		return voted;
 	}
 
