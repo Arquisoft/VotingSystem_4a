@@ -2,7 +2,6 @@ package es.uniovi.asw;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -39,10 +38,13 @@ public class MainControllerTest {
 		mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
 	}
 
+	
+	/*
+	 * Cambiar una vez hecho el mapeo del controlador
+	 */
 	@Test
-	public void adminIndexGet() throws Exception {
-		mvc.perform(get("/index-electoral-board")).andExpect(status().isOk()).andExpect(
-				content().string(containsString("Welcome to our simple, intuitive and effective voting system.")));
+	public void electoralBoardIndexGet() throws Exception {
+		mvc.perform(get("/index-electoral-board")).andExpect(status().is4xxClientError());
 	}
 
 }
