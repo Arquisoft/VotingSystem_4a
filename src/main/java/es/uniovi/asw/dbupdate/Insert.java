@@ -1,7 +1,6 @@
 package es.uniovi.asw.dbupdate;
 
-import es.uniovi.asw.model.Election;
-import es.uniovi.asw.model.ElectionCall;
+import es.uniovi.asw.model.*;
 import es.uniovi.asw.util.ParametersException;
 
 /**
@@ -10,10 +9,19 @@ import es.uniovi.asw.util.ParametersException;
  */
 public interface Insert {
 
-	void insertElectionCall(ElectionCall electionCall) throws ParametersException;
+	ElectionCall insertElectionCall(ElectionCall electionCall) throws ParametersException;
 
-	void insertElection(Long idElectionCall, Election election) throws ParametersException;
+	Election insertElection(Long idElectionCall, Election election) throws ParametersException;
 
+	Region insertRegion(Long idElection, Region region) throws ParametersException;
 
+	District insertDistrict(Long idRegion, District district) throws ParametersException;
 
+	ReferendumOption insertReferendumOption(Long idDistrict, ReferendumOption referendumOption) throws ParametersException;
+
+	VotingPlace insertVotingPlace(Long idDistrict, VotingPlace votingPlace) throws ParametersException;
+
+	Voter insertVoter(Long idVotingPlace, Voter voter) throws ParametersException;
+
+	Vote insertVote(Long idCandidature, Long idVotingPlace) throws ParametersException;
 }
