@@ -6,7 +6,6 @@ import es.uniovi.asw.dbupdate.repositories.*;
 import es.uniovi.asw.model.*;
 import es.uniovi.asw.util.ParametersException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,74 +34,96 @@ public class InsertP implements Insert {
 	private VotingPlaceRepository placeRepository;
 
 	@Autowired
+	private VoteRepository voteRepository;
+
+	@Autowired
 	private VoterRepository voterRepository;
 
 
 	@Override
-	public void insertElectionCall(ElectionCall electionCall) throws ParametersException {
-		ElectionCallVerifier.verify(electionCall, electionCallRepository);
-		electionCallRepository.save(electionCall);
+	public ElectionCall insertElectionCall(ElectionCall electionCall) throws ParametersException {
+		ElectionCallVerifier.verify(electionCall);
+		return electionCallRepository.save(electionCall);
 	}
 
 	@Override
-	public void insertElection(Long idElectionCall, Election election) throws ParametersException {
-		ElectionVerifier.verify(election, electionRepository);
+	public Election insertElection(Long idElectionCall, Election election) throws ParametersException {
+		ElectionVerifier.verify(election);
 
 		ElectionCall electionCall = electionCallRepository.findOne(idElectionCall);
-		ElectionCallVerifier.verify(electionCall, electionCallRepository);
+		ElectionCallVerifier.verify(electionCall);
 
 		electionCall.addElection(election);
-		electionCallRepository.save(electionCall);
+		return electionRepository.save(election);
 	}
 
-	public void insertRegion(Long idElection, Region region) throws ParametersException {
-		RegionVerifier.verify(region, regionRepository);
+	@Override
+	public Region insertRegion(Long idElection, Region region) throws ParametersException {
+		RegionVerifier.verify(region);
 
 		Election election = electionRepository.findOne(idElection);
-		ElectionVerifier.verify(election, electionRepository);
+		ElectionVerifier.verify(election);
 
 		election.addRegion(region);
-		electionRepository.save(election);
+		return regionRepository.save(region);
 	}
 
-	public void insertDistrict(Long idRegion, District district) throws ParametersException {
-		DistrictVerifier.verify(district, districtRepository);
+	@Override
+	public District insertDistrict(Long idRegion, District district) throws ParametersException {
+		DistrictVerifier.verify(district);
 
 		Region region = regionRepository.findOne(idRegion);
-		RegionVerifier.verify(region, regionRepository);
+		RegionVerifier.verify(region);
 
 		region.addDistrict(district);
-		regionRepository.save(region);
+		return districtRepository.save(district);
 	}
 
-	public void insertReferendumOption(Long idDistrict, ReferendumOption referendumOption) throws ParametersException {
-		ReferendumOptionVerifier.verify(referendumOption, candidatureRepository);
+	@Override
+	public ReferendumOption insertReferendumOption(Long idDistrict, ReferendumOption referendumOption) throws ParametersException {
+		ReferendumOptionVerifier.verify(referendumOption);
 
 		District district = districtRepository.findOne(idDistrict);
-		DistrictVerifier.verify(district, districtRepository);
+		DistrictVerifier.verify(district);
 
 		district.addCandidature(referendumOption);
-		districtRepository.save(district);
+		return candidatureRepository.save(referendumOption);
 	}
 
-	public void insertVotingPlace(Long idDistrict, VotingPlace votingPlace) throws ParametersException {
-		VotingPlaceVerifier.verify(votingPlace, placeRepository);
+	@Override
+	public VotingPlace insertVotingPlace(Long idDistrict, VotingPlace votingPlace) throws ParametersException {
+		VotingPlaceVerifier.verify(votingPlace);
 
 		District district = districtRepository.findOne(idDistrict);
-		DistrictVerifier.verify(district, districtRepository);
+		DistrictVerifier.verify(district);
 
 		district.addVotingPlace(votingPlace);
-		districtRepository.save(district);
+		return placeRepository.save(votingPlace);
 	}
 
-	public void insertVoter(Long idVotingPlace, Voter voter) throws ParametersException {
-		VoterVerifier.verify(voter, voterRepository);
+	@Override
+	public Voter insertVoter(Long idVotingPlace, Voter voter) throws ParametersException {
+		VoterVerifier.verify(voter);
 
 		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
-		VotingPlaceVerifier.verify(votingPlace, placeRepository);
+		VotingPlaceVerifier.verify(votingPlace);
 
 		votingPlace.addVoter(voter);
-		placeRepository.save(votingPlace);
+		return voterRepository.save(voter);
+	}
+
+	@Override
+	public Vote insertVote(Long idCandidature, Long idVotingPlace) throws ParametersException {
+		VoteVerifier.verify(idCandidature, idVotingPlace);
+
+		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
+		VotingPlaceVerifier.verify(votingPlace);
+
+		Candidature candidature = candidatureRepository.findOne(idCandidature);
+		CandidatureVerifier.verify(candidature);
+
+		Vote vote = new Vote(votingPlace, candidature);
+		return voteRepository.save(vote);
 	}
 
 }
