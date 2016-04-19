@@ -1,6 +1,5 @@
 package es.uniovi.asw.dbupdate.ports.verifiers;
 
-import es.uniovi.asw.dbupdate.repositories.VoterRepository;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.util.ParametersException;
 
@@ -10,10 +9,10 @@ import es.uniovi.asw.util.ParametersException;
  */
 public class VoterVerifier {
 
-	public static void verify(Voter voter, VoterRepository voterRepository) throws ParametersException {
+	public static void verify(Voter voter) throws ParametersException {
 
 		if (voter == null) {
-			throw new ParametersException("El votante está vacío");
+			throw new ParametersException("El votante no existe");
 		}
 
 		if (voter.getName() == null || voter.getName().equals("")) {
@@ -30,10 +29,6 @@ public class VoterVerifier {
 
 		if (voter.getCode() == null || voter.getCode() < 0) {
 			throw new ParametersException("El colegio electoral del votante no es correcto");
-		}
-
-		if (voterRepository.findByNif(voter.getNif()) != null) {
-			throw new ParametersException("Ya hay registrado un votante con el mismo NIF");
 		}
 
 	}

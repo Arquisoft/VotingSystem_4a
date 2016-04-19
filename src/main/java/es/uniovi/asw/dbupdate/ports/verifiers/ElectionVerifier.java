@@ -1,6 +1,5 @@
 package es.uniovi.asw.dbupdate.ports.verifiers;
 
-import es.uniovi.asw.dbupdate.repositories.ElectionRepository;
 import es.uniovi.asw.model.Election;
 import es.uniovi.asw.util.ParametersException;
 
@@ -10,10 +9,10 @@ import es.uniovi.asw.util.ParametersException;
  */
 public class ElectionVerifier {
 
-	public static void verify(Election election, ElectionRepository electionRepository) throws ParametersException {
+	public static void verify(Election election) throws ParametersException {
 
 		if (election == null) {
-			throw new ParametersException("La elección está vacía");
+			throw new ParametersException("La elección no existe");
 		}
 
 		if (election.getName() == null || election.getName().equals("")) {
@@ -22,14 +21,6 @@ public class ElectionVerifier {
 
 		if (election.getDescription() == null || election.getDescription().equals("")) {
 			throw new ParametersException("La elección debe tener una descripción");
-		}
-
-		if (electionRepository.findByName(election.getName()) != null) {
-			throw new ParametersException("Ya hay registrada una elección con el mismo nombre");
-		}
-
-		if (electionRepository.findByElectionDateTime(election.getElectionDateTime()) != null) {
-			throw new ParametersException("Ya hay registrada una elección en la misma fecha");
 		}
 
 	}

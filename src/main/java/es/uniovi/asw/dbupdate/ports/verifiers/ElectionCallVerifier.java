@@ -1,6 +1,5 @@
 package es.uniovi.asw.dbupdate.ports.verifiers;
 
-import es.uniovi.asw.dbupdate.repositories.ElectionCallRepository;
 import es.uniovi.asw.model.ElectionCall;
 import es.uniovi.asw.util.ParametersException;
 
@@ -10,10 +9,10 @@ import es.uniovi.asw.util.ParametersException;
  */
 public class ElectionCallVerifier {
 
-	public static void verify(ElectionCall electionCall, ElectionCallRepository electionCallRepository) throws ParametersException {
+	public static void verify(ElectionCall electionCall) throws ParametersException {
 
 		if (electionCall == null) {
-			throw new ParametersException("La elección está vacía");
+			throw new ParametersException("La elección no existe");
 		}
 
 		if (electionCall.getName() == null || electionCall.getName().equals("")) {
@@ -22,10 +21,6 @@ public class ElectionCallVerifier {
 
 		if (electionCall.getDescription() == null || electionCall.getDescription().equals("")) {
 			throw new ParametersException("La convocatoria electoral debe tener una descripción");
-		}
-
-		if (electionCallRepository.findByName(electionCall.getName()) != null) {
-			throw new ParametersException("Ya hay registrada una convocatoria electoral con el mismo nombre");
 		}
 
 	}

@@ -1,6 +1,5 @@
 package es.uniovi.asw.dbupdate.ports.verifiers;
 
-import es.uniovi.asw.dbupdate.repositories.DistrictRepository;
 import es.uniovi.asw.model.District;
 import es.uniovi.asw.util.ParametersException;
 
@@ -10,18 +9,14 @@ import es.uniovi.asw.util.ParametersException;
  */
 public class DistrictVerifier {
 
-	public static void verify(District district, DistrictRepository districtRepository) throws ParametersException {
+	public static void verify(District district) throws ParametersException {
 
 		if (district == null) {
-			throw new ParametersException("La circunscripción está vacía");
+			throw new ParametersException("La circunscripción no existe");
 		}
 
 		if (district.getName() == null || district.getName().equals("")) {
 			throw new ParametersException("La circunscripción debe tener un nombre");
-		}
-
-		if (districtRepository.findByName(district.getName()) != null) {
-			throw new ParametersException("Ya hay registrada una circunscripción con el mismo nombre");
 		}
 
 	}
