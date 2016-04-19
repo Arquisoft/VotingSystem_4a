@@ -6,7 +6,7 @@ import es.uniovi.asw.model.ReferendumOption;
 import es.uniovi.asw.util.ParametersException;
 
 /**
- * RegionVerifier
+ * ReferendumOptionVerifier
  * Created by ivan on 15/04/16.
  */
 public class ReferendumOptionVerifier {

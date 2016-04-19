@@ -5,7 +5,7 @@ import es.uniovi.asw.model.VotingPlace;
 import es.uniovi.asw.util.ParametersException;
 
 /**
- * RegionVerifier
+ * VotingPlaceVerifier
  * Created by ivan on 15/04/16.
  */
 public class VotingPlaceVerifier {
@@ -21,7 +21,7 @@ public class VotingPlaceVerifier {
 		}
 
 		if (votingPlaceRepository.findByName(votingPlace.getName()) != null) {
-			throw new ParametersException("Ya hay registrada un colegio electoral con el mismo nombre");
+			throw new ParametersException("Ya hay registrado un colegio electoral con el mismo nombre");
 		}
 
 	}

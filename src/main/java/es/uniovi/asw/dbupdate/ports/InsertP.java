@@ -34,6 +34,9 @@ public class InsertP implements Insert {
 	@Autowired
 	private VotingPlaceRepository placeRepository;
 
+	@Autowired
+	private VoterRepository voterRepository;
+
 
 	@Override
 	public void insertElectionCall(ElectionCall electionCall) throws ParametersException {
@@ -90,6 +93,16 @@ public class InsertP implements Insert {
 
 		district.addVotingPlace(votingPlace);
 		districtRepository.save(district);
+	}
+
+	public void insertVoter(Long idVotingPlace, Voter voter) throws ParametersException {
+		VoterVerifier.verify(voter, voterRepository);
+
+		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
+		VotingPlaceVerifier.verify(votingPlace, placeRepository);
+
+		votingPlace.addVoter(voter);
+		placeRepository.save(votingPlace);
 	}
 
 }
