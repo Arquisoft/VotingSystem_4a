@@ -14,7 +14,6 @@ public class CandidatureList extends Candidature {
 
 	private static final long serialVersionUID = -1130784911884346604L;
 
-	@Column(nullable = false)
 	private String listName;
 
 	@OneToMany(mappedBy = "candidatureList", cascade = {CascadeType.ALL })

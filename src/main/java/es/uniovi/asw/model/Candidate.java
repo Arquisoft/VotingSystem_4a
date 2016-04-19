@@ -12,7 +12,6 @@ public class Candidate extends Candidature {
 
 	private static final long serialVersionUID = -2696885021892064778L;
 
-	@Column(nullable = false)
 	private String name;
 
 	@ManyToOne
