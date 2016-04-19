@@ -37,8 +37,8 @@ public class InsertP implements Insert {
 		ElectionCall electionCall = electionCallRepository.findOne(idElectionCall);
 		ElectionCallVerifier.verify(electionCall, electionCallRepository);
 
-		election.setElectionCall(electionCall);
-		electionRepository.save(election);
+		electionCall.addElection(election);
+		electionCallRepository.save(electionCall);
 	}
 
 }
