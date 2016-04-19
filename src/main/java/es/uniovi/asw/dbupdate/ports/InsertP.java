@@ -62,4 +62,14 @@ public class InsertP implements Insert {
 		election.addRegion(region);
 		electionRepository.save(election);
 	}
+
+	public void insertDistrict(Long idRegion, District district) throws ParametersException {
+		DistrictVerifier.verify(district, districtRepository);
+
+		Region region = regionRepository.findOne(idRegion);
+		RegionVerifier.verify(region, regionRepository);
+
+		region.addDistrict(district);
+		regionRepository.save(region);
+	}
 }
