@@ -2,6 +2,7 @@ package es.uniovi.asw;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,19 +24,25 @@ import org.springframework.web.context.WebApplicationContext;
 @IntegrationTest({ "server.port=0" })
 public class MainControllerTest {
 
-  @Autowired
-  private WebApplicationContext context;
+	@Autowired
+	private WebApplicationContext context;
 
-  private MockMvc mvc;
+	private MockMvc mvc;
 
-  @Before
-  public void setUp() throws Exception {
-    mvc = MockMvcBuilders.webAppContextSetup(context).build();
-  }
+	@Before
+	public void setUp() throws Exception {
+		mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	}
 
-  @Test
-  public void testIndex() throws Exception {
-    mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
-  }
+	@Test
+	public void testIndex() throws Exception {
+		mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
+	}
+
+	@Test
+	public void adminIndexGet() throws Exception {
+		mvc.perform(get("/index-electoral-board")).andExpect(status().isOk()).andExpect(
+				content().string(containsString("Welcome to our simple, intuitive and effective voting system.")));
+	}
 
 }
