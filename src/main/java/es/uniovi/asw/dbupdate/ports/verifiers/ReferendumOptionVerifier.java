@@ -1,6 +1,7 @@
 package es.uniovi.asw.dbupdate.ports.verifiers;
 
-import es.uniovi.asw.dbupdate.repositories.ReferendumOptionRepository;
+import es.uniovi.asw.dbupdate.repositories.CandidatureRepository;
+import es.uniovi.asw.model.Candidature;
 import es.uniovi.asw.model.ReferendumOption;
 import es.uniovi.asw.util.ParametersException;
 
@@ -10,7 +11,7 @@ import es.uniovi.asw.util.ParametersException;
  */
 public class ReferendumOptionVerifier {
 
-	public static void verify(ReferendumOption referendumOption, ReferendumOptionRepository referendumOptionRepository) throws ParametersException {
+	public static void verify(ReferendumOption referendumOption, CandidatureRepository candidatureRepository) throws ParametersException {
 
 		if (referendumOption == null) {
 			throw new ParametersException("La opción de referéndum está vacía");
@@ -20,7 +21,7 @@ public class ReferendumOptionVerifier {
 			throw new ParametersException("La opción de referéndum debe tener un nombre");
 		}
 
-		if (referendumOptionRepository.findByOption(referendumOption.getOption()) != null) {
+		if (candidatureRepository.findByOption(referendumOption.getOption()) != null) {
 			throw new ParametersException("Ya hay registrada una opción de referéndum con el mismo nombre");
 		}
 

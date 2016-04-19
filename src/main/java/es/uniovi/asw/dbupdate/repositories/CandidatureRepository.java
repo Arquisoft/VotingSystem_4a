@@ -9,4 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CandidatureRepository extends CrudRepository<Candidature, Long> {
 
+	Candidature findByOption(String option);
+
 }

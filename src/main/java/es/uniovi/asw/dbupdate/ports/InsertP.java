@@ -1,20 +1,12 @@
 package es.uniovi.asw.dbupdate.ports;
 
 import es.uniovi.asw.dbupdate.Insert;
-import es.uniovi.asw.dbupdate.ports.verifiers.DistrictVerifier;
-import es.uniovi.asw.dbupdate.ports.verifiers.ElectionCallVerifier;
-import es.uniovi.asw.dbupdate.ports.verifiers.ElectionVerifier;
-import es.uniovi.asw.dbupdate.ports.verifiers.RegionVerifier;
-import es.uniovi.asw.dbupdate.repositories.DistrictRepository;
-import es.uniovi.asw.dbupdate.repositories.ElectionCallRepository;
-import es.uniovi.asw.dbupdate.repositories.ElectionRepository;
-import es.uniovi.asw.dbupdate.repositories.RegionRepository;
-import es.uniovi.asw.model.District;
-import es.uniovi.asw.model.Election;
-import es.uniovi.asw.model.ElectionCall;
-import es.uniovi.asw.model.Region;
+import es.uniovi.asw.dbupdate.ports.verifiers.*;
+import es.uniovi.asw.dbupdate.repositories.*;
+import es.uniovi.asw.model.*;
 import es.uniovi.asw.util.ParametersException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,6 +27,11 @@ public class InsertP implements Insert {
 
 	@Autowired
 	private DistrictRepository districtRepository;
+	@Qualifier("candidatureRepository")
+
+	@Autowired
+	private CandidatureRepository candidatureRepository;
+
 
 	@Override
 	public void insertElectionCall(ElectionCall electionCall) throws ParametersException {
@@ -71,5 +68,15 @@ public class InsertP implements Insert {
 
 		region.addDistrict(district);
 		regionRepository.save(region);
+	}
+
+	public void insertReferendumOption(Long idDistrict, ReferendumOption referendumOption) throws ParametersException {
+		ReferendumOptionVerifier.verify(referendumOption, candidatureRepository);
+
+		District district = districtRepository.findOne(idDistrict);
+		DistrictVerifier.verify(district, districtRepository);
+
+		district.addCandidature(referendumOption);
+		districtRepository.save(district);
 	}
 }
