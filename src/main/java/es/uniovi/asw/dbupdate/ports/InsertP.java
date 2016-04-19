@@ -48,6 +48,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public Election insertElection(Long idElectionCall, Election election) throws ParametersException {
+
+		if (idElectionCall == null) {
+			throw new ParametersException("El id de la convocatoria electoral es nulo");
+		}
+
 		ElectionVerifier.verify(election);
 
 		ElectionCall electionCall = electionCallRepository.findOne(idElectionCall);
@@ -59,6 +64,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public Region insertRegion(Long idElection, Region region) throws ParametersException {
+
+		if (idElection == null) {
+			throw new ParametersException("El id de elección es nulo");
+		}
+
 		RegionVerifier.verify(region);
 
 		Election election = electionRepository.findOne(idElection);
@@ -70,6 +80,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public District insertDistrict(Long idRegion, District district) throws ParametersException {
+
+		if (idRegion == null) {
+			throw new ParametersException("El id de región es nulo");
+		}
+
 		DistrictVerifier.verify(district);
 
 		Region region = regionRepository.findOne(idRegion);
@@ -81,6 +96,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public ReferendumOption insertReferendumOption(Long idDistrict, ReferendumOption referendumOption) throws ParametersException {
+
+		if (idDistrict == null) {
+			throw new ParametersException("El id de circunscripción es nulo");
+		}
+
 		ReferendumOptionVerifier.verify(referendumOption);
 
 		District district = districtRepository.findOne(idDistrict);
@@ -92,6 +112,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public VotingPlace insertVotingPlace(Long idDistrict, VotingPlace votingPlace) throws ParametersException {
+
+		if (idDistrict == null) {
+			throw new ParametersException("El id de circunscripción es nulo");
+		}
+
 		VotingPlaceVerifier.verify(votingPlace);
 
 		District district = districtRepository.findOne(idDistrict);
@@ -103,6 +128,11 @@ public class InsertP implements Insert {
 
 	@Override
 	public Voter insertVoter(Long idVotingPlace, Voter voter) throws ParametersException {
+
+		if (idVotingPlace == null) {
+			throw new ParametersException("El id del colegio electoral es nulo");
+		}
+
 		VoterVerifier.verify(voter);
 
 		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
@@ -114,6 +144,15 @@ public class InsertP implements Insert {
 
 	@Override
 	public Vote insertVote(Long idCandidature, Long idVotingPlace) throws ParametersException {
+
+		if (idCandidature == null) {
+			throw new ParametersException("El id de candidatura es nulo");
+		}
+
+		if (idVotingPlace == null) {
+			throw new ParametersException("El id de colegio electoral es nulo");
+		}
+
 		VoteVerifier.verify(idCandidature, idVotingPlace);
 
 		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
