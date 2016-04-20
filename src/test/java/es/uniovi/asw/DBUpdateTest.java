@@ -48,7 +48,6 @@ public class DBUpdateTest {
 	private ReferendumOption referendumOption;
 	private VotingPlace votingPlace;
 	private Voter voter;
-	private Vote vote;
 
 	@Before
 	public void setUp() throws Exception {

@@ -3,7 +3,6 @@ package es.uniovi.asw.dbupdate.repositories;
 import es.uniovi.asw.model.Election;
 import es.uniovi.asw.model.ElectionCall;
 import es.uniovi.asw.model.types.ElectionDateTime;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
