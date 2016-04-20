@@ -27,8 +27,10 @@ import es.uniovi.asw.model.Vote;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.model.VotingPlace;
 import es.uniovi.asw.model.types.ElectionDateTime;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 	
 	private Logger log = LoggerFactory.getLogger(DBLoader.class);
@@ -120,22 +122,17 @@ public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 		
 		district.addVotingPlace(votingPlace);
 		placeRepository.save(votingPlace);
-		
-		
-		Voter ivan = new Voter("Iván", "ivan@eii.es", "11111111A", 1L, null);
-		Voter ricardo = new Voter("Ricardo", "ricardo@eii.es", "22222222A", 2L, null);
-		
-		ricardo.setVotingPlace(votingPlace);
-		
+
+		Voter ivan = new Voter("Iván", "ivan@eii.es", "11111111A", 1L, "ivan");
+		ivan.setVotingPlace(votingPlace);
 		voterRepository.save(ivan);
-		
-		voteRepository.save(new Vote(ricardo.getVotingPlace(), referendumOption));
+
+		Voter ricardo = new Voter("Ricardo", "ricardo@eii.es", "22222222A", 2L, "ricardo");
+		ricardo.setVotingPlace(votingPlace);
 		ricardo.setVoted(true);
 		voterRepository.save(ricardo);
-				
-		
-		
-		
+
+		voteRepository.save(new Vote(ricardo.getVotingPlace(), referendumOption));
 		
 	}
 
