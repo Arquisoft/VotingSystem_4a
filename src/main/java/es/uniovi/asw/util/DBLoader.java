@@ -111,8 +111,9 @@ public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 		ReferendumOption referendumOption = new ReferendumOption();
 		referendumOption.setOption("Sí");
 		
-		candidatureRepository.save(referendumOption);
 		district.addCandidature(referendumOption);
+		candidatureRepository.save(referendumOption);
+		
 		
 		VotingPlace votingPlace = new VotingPlace();
 		votingPlace.setName("Colegio La Ería");
