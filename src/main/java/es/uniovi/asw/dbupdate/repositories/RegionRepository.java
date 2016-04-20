@@ -1,5 +1,6 @@
 package es.uniovi.asw.dbupdate.repositories;
 
+import es.uniovi.asw.model.Election;
 import es.uniovi.asw.model.Region;
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,5 +11,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface RegionRepository extends CrudRepository<Region, Long> {
 
 	Region findByName(String name);
+
+	Iterable<Region> findByElection(Election idElection);
 
 }
