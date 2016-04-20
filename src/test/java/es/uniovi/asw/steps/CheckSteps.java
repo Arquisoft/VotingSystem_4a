@@ -34,8 +34,8 @@ public class CheckSteps {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
-	@Entonces("^se le muestra si un votante a votado o no$")
-	public void se_le_muestra_si_un_votante_a_votado_o_no() throws Throwable {
+	@Entonces("^se le muestra si un votante ha votado o no$")
+	public void se_le_muestra_si_un_votante_ha_votado_o_no() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
