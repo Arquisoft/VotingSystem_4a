@@ -1,6 +1,7 @@
 package es.uniovi.asw;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,22 +40,20 @@ public class ModelTest {
 		Region r = new Region("España");
 		e.addRegion(r);
 		r.addDistrict(new District("Unica"));
-		
 
 		assertEquals(1, e.getRegions().size());
 		assertEquals(1, r.getDistricts().size()); // Circunscripcion unica
 		assertNotNull(e);
 
 	}
-	
-	
+
 	@Test
 	public void testVotingPlace() {
 		VotingPlace vp = new VotingPlace("Colegio 1");
 		vp.addVote(new Vote(true));
 		vp.addVote(new Vote(false));
 		vp.addVote(new Vote(true));
-		
+
 		assertEquals(3, vp.getVotes().size());
 	}
 

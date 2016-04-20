@@ -10,5 +10,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 
 	Voter findByNif(String nif);
+	Voter findByEmail(String email);
 
 }
