@@ -10,4 +10,6 @@ import es.uniovi.asw.util.ParametersException;
 public interface GetVoter {
 
 	Voter getVoter(Long idVoter) throws ParametersException;
+
+	Voter getVoter(String nif) throws ParametersException;
 }

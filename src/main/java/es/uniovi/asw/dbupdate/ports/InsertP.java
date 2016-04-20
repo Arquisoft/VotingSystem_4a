@@ -34,9 +34,6 @@ public class InsertP implements Insert {
 	private VotingPlaceRepository placeRepository;
 
 	@Autowired
-	private VoteRepository voteRepository;
-
-	@Autowired
 	private VoterRepository voterRepository;
 
 
@@ -140,29 +137,6 @@ public class InsertP implements Insert {
 
 		votingPlace.addVoter(voter);
 		return voterRepository.save(voter);
-	}
-
-	@Override
-	public Vote insertVote(Long idCandidature, Long idVotingPlace) throws ParametersException {
-
-		if (idCandidature == null) {
-			throw new ParametersException("El id de candidatura es nulo");
-		}
-
-		if (idVotingPlace == null) {
-			throw new ParametersException("El id de colegio electoral es nulo");
-		}
-
-		VoteVerifier.verify(idCandidature, idVotingPlace);
-
-		VotingPlace votingPlace = placeRepository.findOne(idVotingPlace);
-		VotingPlaceVerifier.verify(votingPlace);
-
-		Candidature candidature = candidatureRepository.findOne(idCandidature);
-		CandidatureVerifier.verify(candidature);
-
-		Vote vote = new Vote(votingPlace, candidature);
-		return voteRepository.save(vote);
 	}
 
 }

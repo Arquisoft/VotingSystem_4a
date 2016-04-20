@@ -1,6 +1,10 @@
 package es.uniovi.asw;
 
+import es.uniovi.asw.Application;
+import es.uniovi.asw.dbupdate.ports.GetParametersP;
+import es.uniovi.asw.dbupdate.ports.GetVoterP;
 import es.uniovi.asw.dbupdate.ports.InsertP;
+import es.uniovi.asw.dbupdate.ports.RegisterVoteP;
 import es.uniovi.asw.model.*;
 import es.uniovi.asw.model.types.ElectionDateTime;
 import org.junit.Before;
@@ -17,16 +21,25 @@ import java.util.Calendar;
 import static org.junit.Assert.*;
 
 /**
- * InsertPTest
+ * DBUpdateTest
  * Created by ivan on 19/04/16.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @Transactional
-public class InsertPTest {
+public class DBUpdateTest {
 
 	@Autowired
 	private InsertP insertP;
+
+	@Autowired
+	private RegisterVoteP registerVoteP;
+
+	@Autowired
+	private GetVoterP getVoterP;
+
+	@Autowired
+	private GetParametersP getParametersP;
 
 	private ElectionCall electionCall;
 	private Election election;
@@ -138,7 +151,7 @@ public class InsertPTest {
 	@Test
 	public void insertVoter() throws Exception {
 		insertVotingPlace();
-		Voter voter = new Voter();
+		voter = new Voter();
 
 		voter.setName("Iván");
 		voter.setEmail("ivan@eii.es");
@@ -162,8 +175,63 @@ public class InsertPTest {
 		assertTrue(district.getCandidatures().size() > 0);
 		assertTrue(referendumOption.getId() > 0);
 
-		insertP.insertVote(referendumOption.getId(), votingPlace.getId());
+		registerVoteP.insertVote(referendumOption.getId(), votingPlace.getId());
 		assertTrue(votingPlace.getVotes().size() > 0);
+	}
+
+	@Test
+	public void getVoter() throws Exception {
+		insertVoter();
+
+		voter = getVoterP.getVoter(voter.getId());
+		assertNotNull(voter);
+	}
+
+	@Test
+	public void registerVoter() throws Exception {
+		insertVoter();
+
+		voter = getVoterP.getVoter(voter.getId());
+		assertNotNull(voter);
+
+		assertFalse(voter.hasVoted());
+		voter = registerVoteP.registerVoter(voter.getNif());
+		assertTrue(voter.hasVoted());
+	}
+
+	@Test
+	public void getElectionCalls() throws Exception {
+		assertNotNull(getParametersP.getElectionCalls());
+	}
+
+	@Test
+	public void getElections() throws Exception {
+		insertElection();
+		assertNotNull(getParametersP.getElections(electionCall.getId()));
+	}
+
+	@Test
+	public void getRegions() throws Exception {
+		insertRegion();
+		assertNotNull(getParametersP.getRegions(election.getId()));
+	}
+
+	@Test
+	public void getDistricts() throws Exception {
+		insertDistrict();
+		assertNotNull(getParametersP.getDistricts(region.getId()));
+	}
+
+	@Test
+	public void getCandidatures() throws Exception {
+		insertReferendumOption();
+		assertNotNull(getParametersP.getCandidatures(district.getId()));
+	}
+
+	@Test
+	public void getVotingPlaces() throws Exception {
+		insertVotingPlace();
+		assertNotNull(getParametersP.getVotingPlaces(district.getId()));
 	}
 
 }

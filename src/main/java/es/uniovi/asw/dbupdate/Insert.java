@@ -23,5 +23,4 @@ public interface Insert {
 
 	Voter insertVoter(Long idVotingPlace, Voter voter) throws ParametersException;
 
-	Vote insertVote(Long idCandidature, Long idVotingPlace) throws ParametersException;
 }
