@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.uniovi.asw.dbupdate.repositories.ElectionRepository;
-import es.uniovi.asw.dbupdate.repositories.VoterRepository;
 import es.uniovi.asw.model.Candidature;
 import es.uniovi.asw.model.District;
 import es.uniovi.asw.model.Region;
