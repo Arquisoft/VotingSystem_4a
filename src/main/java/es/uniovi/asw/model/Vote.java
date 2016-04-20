@@ -24,8 +24,14 @@ public class Vote implements Serializable {
 
 	@ManyToOne
 	private Candidature candidature;
+	
+	private boolean option;
 
 	public Vote() {}
+	
+	public Vote(boolean option){
+		this.option = option;
+	}
 
 	public Vote(VotingPlace votingPlace, Candidature candidature) {
 
@@ -64,5 +70,13 @@ public class Vote implements Serializable {
 				", votingPlace=" + votingPlace +
 				", candidature=" + candidature +
 				'}';
+	}
+
+	public boolean getOption() {
+		return option;
+	}
+
+	public void setOption(boolean option) {
+		this.option = option;
 	}
 }

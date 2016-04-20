@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"
+	rel="stylesheet" />
+
+<link href="../static/css/electionsTable.css"
+	th:href="@{/css/electionsTable.css}" rel="stylesheet" />
+
+<link href='http://fonts.googleapis.com/css?family=Varela+Round'
+	th:ref='http://fonts.googleapis.com/css?family=Varela+Round'
+	rel='stylesheet' type='text/css'></link>
+</head>
+<body>
+	<h1>Voting System.</h1>
+	<div class="electionsTable">
+		<table>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Fecha inicio</th>
+				<th>Fecha fin</th>
+			</tr>
+			<tr th:each="e : ${elecciones}">
+				<input type="hidden" th:value="${e.id}" />
+				<td th:text="${e.name}">Nombre</td>
+				<td th:text="${e.description}">Descripción</td>
+				<td th:text="${e.electionDateTime.startTime}">Fecha inicio</td>
+				<td th:text="${e.electionDateTime.endTime}">Fecha fin</td>
+				<td><a th:href="${'/candidaturas/' + e.id}"><strong>Mostrar candidaturas</strong></a>
+			</tr>
+
+		</table>
+	</div>
+
+</body>
+</html>

@@ -23,19 +23,28 @@ import org.springframework.web.context.WebApplicationContext;
 @IntegrationTest({ "server.port=0" })
 public class MainControllerTest {
 
-  @Autowired
-  private WebApplicationContext context;
+	@Autowired
+	private WebApplicationContext context;
 
-  private MockMvc mvc;
+	private MockMvc mvc;
 
-  @Before
-  public void setUp() throws Exception {
-    mvc = MockMvcBuilders.webAppContextSetup(context).build();
-  }
+	@Before
+	public void setUp() throws Exception {
+		mvc = MockMvcBuilders.webAppContextSetup(context).build();
+	}
 
-  @Test
-  public void testIndex() throws Exception {
-    mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
-  }
+	@Test
+	public void testIndex() throws Exception {
+		mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
+	}
+
+	
+	/*
+	 * Cambiar una vez hecho el mapeo del controlador
+	 */
+	@Test
+	public void electoralBoardIndexGet() throws Exception {
+		mvc.perform(get("/index-electoral-board")).andExpect(status().is4xxClientError());
+	}
 
 }

@@ -1,7 +1,9 @@
 package es.uniovi.asw.parametersmanager.ports;
 
-import es.uniovi.asw.parametersmanager.ReadParameters;
 import org.springframework.stereotype.Service;
+
+import es.uniovi.asw.model.types.ElectionDateTime;
+import es.uniovi.asw.parametersmanager.ReadParameters;
 
 /**
  * RParameters
@@ -9,5 +11,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RParameters implements ReadParameters {
+	
+	public void read(ElectionDateTime edt, String name, String description){
+		
+		
+	}
 
 }

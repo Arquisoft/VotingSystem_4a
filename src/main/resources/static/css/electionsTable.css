@@ -1,0 +1,125 @@
+.electionsTable {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	box-shadow: 10px 10px 5px #888888;
+	border: 1px solid #000000;
+	-moz-border-radius-bottomleft: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-webkit-border-bottom-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	-webkit-border-top-right-radius: 12px;
+	border-top-right-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	-webkit-border-top-left-radius: 12px;
+	border-top-left-radius: 12px;
+}
+
+.electionsTable table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.electionsTable tr:last-child td:last-child {
+	-moz-border-radius-bottomright: 12px;
+	-webkit-border-bottom-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.electionsTable table tr:first-child td:first-child {
+	-moz-border-radius-topleft: 12px;
+	-webkit-border-top-left-radius: 12px;
+	border-top-left-radius: 12px;
+}
+
+.electionsTable table tr:first-child td:last-child {
+	-moz-border-radius-topright: 12px;
+	-webkit-border-top-right-radius: 12px;
+	border-top-right-radius: 12px;
+}
+
+.electionsTable tr:last-child td:first-child {
+	-moz-border-radius-bottomleft: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+.electionsTable tr:hover td {
+	background-color: #d4aaff;
+}
+
+.electionsTable td {
+	vertical-align: middle;
+	background: -o-linear-gradient(bottom, #aa56ff 5%, #d4aaff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #aa56ff
+		), color-stop(1, #d4aaff));
+	background: -moz-linear-gradient(center top, #aa56ff 5%, #d4aaff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aa56ff",
+		endColorstr="#d4aaff");
+	background: -o-linear-gradient(top, #aa56ff, d4aaff);
+	background-color: #aa56ff;
+	border: 1px solid #000000;
+	border-width: 0px 1px 1px 0px;
+	text-align: left;
+	padding: 7px;
+	font-size: 10px;
+	font-family: Helvetica;
+	font-weight: bold;
+	color: #000000;
+}
+
+.electionsTable tr:last-child td {
+	border-width: 0px 1px 0px 0px;
+}
+
+.electionsTable tr td:last-child {
+	border-width: 0px 0px 1px 0px;
+}
+
+.electionsTable tr:last-child td:last-child {
+	border-width: 0px 0px 0px 0px;
+}
+
+.electionsTable tr:first-child td {
+	background: -o-linear-gradient(bottom, #5656ff 5%, #aaaaff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5656ff
+		), color-stop(1, #aaaaff));
+	background: -moz-linear-gradient(center top, #5656ff 5%, #aaaaff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5656ff",
+		endColorstr="#aaaaff");
+	background: -o-linear-gradient(top, #5656ff, aaaaff);
+	background-color: #5656ff;
+	border: 0px solid #000000;
+	text-align: center;
+	border-width: 0px 0px 1px 1px;
+	
+	font-family: Verdana;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.electionsTable tr:first-child:hover td {
+	background: -o-linear-gradient(bottom, #5656ff 5%, #aaaaff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5656ff
+		), color-stop(1, #aaaaff));
+	background: -moz-linear-gradient(center top, #5656ff 5%, #aaaaff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5656ff",
+		endColorstr="#aaaaff");
+	background: -o-linear-gradient(top, #5656ff, aaaaff);
+	background-color: #5656ff;
+}
+
+.electionsTable tr:first-child td:first-child {
+	border-width: 0px 0px 1px 0px;
+}
+
+.electionsTable tr:first-child td:last-child {
+	border-width: 0px 0px 1px 1px;
+}

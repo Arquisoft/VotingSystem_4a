@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Configuración de la elección - Formoid jquery form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="../static/formoid2/formoid-solid-purple.css" type="text/css"
+	th:href="@{/formoid2/formoid-solid-purple.css}" />
+</head>
+<body class="blurBg-false" style="background-color: #EBEBEB">
+
+
+
+	<!-- Start Formoid form-->
+
+	<script type="text/javascript"
+		th:src="../static/formoid2/jquery.min.js"></script>
+	<form class="formoid-solid-purple"
+		style="background-color: #FFFFFF; font-size: 14px; font-family: 'Roboto', Arial, Helvetica, sans-serif; color: #34495E; max-width: 480px; min-width: 150px"
+		method="post" th:action="@{/new-election.phase2}"
+		th:object="${election}">
+		<div class="title">
+			<h2>Configuración de la elección</h2>
+		</div>
+		<div class="element-input">
+			<label class="title"><span class="required">Nombre de
+					la elección: *</span></label>
+			<div class="item-cont">
+				<input class="large" type="text" name="input" required="required"
+					placeholder="Nombre de la elección" th:field="*{name}" /><span
+					class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-textarea">
+			<label class="title">Descripción (opcional):</label>
+			<div class="item-cont">
+				<textarea class="medium" name="textarea" cols="20" rows="5"
+					placeholder="Text Area" th:field="*{description}"></textarea>
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-date">
+			<label class="title"><span class="required">Fecha de
+					inicio: *</span></label>
+			<div class="item-cont">
+				<input class="medium" data-format="yyyy-mm-dd" type="date"
+					name="date" required="required" placeholder="Fecha de inicio"
+					th:field="*{electionDateTime.startTime}" /><span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-date">
+			<label class="title"><span class="required">Fecha de
+					fin: *</span></label>
+			<div class="item-cont">
+				<input class="medium" data-format="yyyy-mm-dd" type="date"
+					name="date1" required="required" placeholder="Fecha de fin"
+					th:field="*{electionDateTime.endTime}" /><span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="submit">
+			<input type="submit" value="Continuar" />
+		</div>
+	</form>
+
+	<script type="text/javascript"
+		src="../static/formoid2/formoid-solid-purple.js"></script>
+
+
+
+
+</body>
+</html>

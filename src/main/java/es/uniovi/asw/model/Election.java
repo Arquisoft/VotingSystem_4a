@@ -41,6 +41,12 @@ public class Election implements Serializable {
 		this.description = description;
 		this.name = name;
 	}
+	
+	public Election(ElectionDateTime electionDateTime, String description, String name) {
+		this.electionDateTime = electionDateTime;
+		this.description = description;
+		this.name = name;
+	}
 
 	public void addRegion(Region region) {
 		if (regions.add(region)) {

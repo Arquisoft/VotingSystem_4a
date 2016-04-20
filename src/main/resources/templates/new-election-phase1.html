@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>VotingSystem_4a</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../static/formoid1/formoid-solid-blue.css"
+	type="text/css" th:href="@{/formoid1/formoid-solid-blue.css}" />
+<link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"
+	rel="stylesheet" />
+</head>
+<body class="blurBg-true" style="background-color: #EBEBEB">
+
+
+
+	<!-- Start Formoid form-->
+
+	<script type="text/javascript"
+		th:src="../static/formoid1/jquery.min.js"></script>
+	<form class="formoid-solid-blue"
+		style="background-color: #FFFFFF; font-size: 14px; font-family: 'Roboto', Arial, Helvetica, sans-serif; color: #34495E; max-width: 480px; min-width: 150px"
+		method="post" th:action="@{/new-election-phase1}" th:object="${electionCall}">
+		<div class="title">
+			<h2>¡Comencemos!</h2>
+		</div>
+		<div class="element-input" title="Introduzca la convocatoria">
+			<label class="title"><span class="required">Convocatoria:
+					*</span></label>
+			<div class="item-cont">
+				<input class="large" type="text" name="input" required="required"
+					placeholder="Nombre de convocatoria" th:field="*{name}"/><span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-select"
+			title="Nº de elecciones que tendrá la convocatoria">
+			<label class="title"><span class="required">Escoja el
+					número de elecciones: *</span></label>
+			<div class="item-cont">
+				<div class="medium">
+					<span><select name="select" required="required" th:field="*{elections}">
+
+							<option value="Una elección">Una elección</option>
+							<option value="Dos elecciones">Dos elecciones</option>
+							<option value="Tres elecciones">Tres elecciones</option>
+					</select><i></i><span class="icon-place"></span></span>
+				</div>
+			</div>
+		</div>
+		<div class="submit">
+			<input type="submit" value="Continuar" />
+		</div>
+	</form>
+
+	
+	<!-- Stop Formoid form-->
+
+
+
+</body>
+
+<footer>
+	<a href="../templates/index-electoral-board.html"
+		class="glyphicon glyphicon-home">Back to menu.</a>
+</footer>
+</html>

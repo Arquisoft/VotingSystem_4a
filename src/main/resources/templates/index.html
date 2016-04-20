@@ -1,7 +1,63 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head"></head>
+<head>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+	th:ref="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round'
+	th:ref='http://fonts.googleapis.com/css?family=Varela+Round'
+	rel='stylesheet' type='text/css'></link>
+<link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"></link>
+
+<script src="../static/webjars/jquery/2.1.4"></script>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
 <body>
-<div th:replace="fragments/header :: cabecera"><p>Hello!</p></div>
+	<h1>Voting System</h1>
+	<div class="text-center" style="padding: 50px 0">
+
+		<div class="logo">login</div>
+		<!-- Main Form -->
+		<div class="login-form-1">
+			<form id="login-form" class="text-left" th:action="@{/}"
+				th:object="${voter}">
+				<div class="login-form-main-message"></div>
+				<div class="main-login-form">
+					<div class="login-group">
+						<div class="form-group">
+							<label for="lg_username" class="sr-only">Email</label> <input
+								type="text" class="form-control" id="lg_username"
+								name="lg_username" placeholder="example@email.com"
+								th:field="*{email}" />
+						</div>
+						<div class="form-group">
+							<label for="lg_password" class="sr-only">Password</label> <input
+								type="password" class="form-control" id="lg_password"
+								name="lg_password" placeholder="password" th:field="*{password}" />
+						</div>
+						<div class="form-group login-group-checkbox">
+							<input type="checkbox" id="lg_remember" name="lg_remember"/>
+							<label for="lg_remember">remember</label>
+						</div>
+					</div>
+					<button type="submit" class="login-button" id="lg_button"
+						onclick="location='/index-electoral-board.html'">
+						<i class="fa fa-chevron-right"></i>
+
+					</button>
+				</div>
+				<div class="etc-login-form">
+					<p>
+						forgot your password? <a href="#">click here</a>
+					</p>
+
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
