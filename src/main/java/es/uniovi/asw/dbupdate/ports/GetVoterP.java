@@ -44,4 +44,17 @@ public class GetVoterP implements GetVoter {
 		return voter;
 	}
 
+	@Override
+	public Voter getVoterByEmail(String email) throws ParametersException {
+
+		if (email == null || email.equals("")) {
+			throw new ParametersException("El email del votante no es válido");
+		}
+
+		Voter voter = voterRepository.findByEmail(email);
+		VoterVerifier.verify(voter);
+
+		return voter;
+	}
+
 }
