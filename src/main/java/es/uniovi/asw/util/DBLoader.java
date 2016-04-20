@@ -84,9 +84,9 @@ public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 		election.setElectionDateTime(electionDateTime);
 		
 		// Link the election call with the election
-		
-		electionRepository.save(election);
 		electionCall.addElection(election);
+		electionRepository.save(election);
+		
 		
 		log.info("Saved election - id: " + election.getId());
 		
@@ -94,16 +94,18 @@ public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Region region = new Region();
 		region.setName("España");
 		
-		regionRepository.save(region);
 		election.addRegion(region);
+		regionRepository.save(region);
+		
 		log.info("Saved region - id: " + region.getId());
 		
 		// Create a new district and link	
 		District district = new District();
 		district.setName("Estado Español");
 		
-		districtRepository.save(district);
 		region.addDistrict(district);
+		districtRepository.save(district);
+		
 		log.info("Saved district - id: " + district.getId());
 		
 		ReferendumOption referendumOption = new ReferendumOption();
@@ -115,8 +117,9 @@ public class DBLoader implements ApplicationListener<ContextRefreshedEvent> {
 		VotingPlace votingPlace = new VotingPlace();
 		votingPlace.setName("Colegio La Ería");
 		
-		placeRepository.save(votingPlace);
 		district.addVotingPlace(votingPlace);
+		placeRepository.save(votingPlace);
+		
 		
 		Voter ivan = new Voter("Iván", "ivan@eii.es", "11111111A", 1L, null);
 		Voter ricardo = new Voter("Ricardo", "ricardo@eii.es", "22222222A", 2L, null);
