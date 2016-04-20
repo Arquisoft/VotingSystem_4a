@@ -32,7 +32,7 @@ public class GetVoterP implements GetVoter {
 	}
 
 	@Override
-	public Voter getVoter(String nif) throws ParametersException {
+	public Voter getVoterByNif(String nif) throws ParametersException {
 
 		if (nif == null || nif.equals("")) {
 			throw new ParametersException("El NIF del votante no es válido");
