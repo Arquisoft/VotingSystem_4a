@@ -12,4 +12,6 @@ public interface GetVoter {
 	Voter getVoter(Long idVoter) throws ParametersException;
 
 	Voter getVoter(String nif) throws ParametersException;
+
+	Voter getVoterByEmail(String email) throws ParametersException;
 }
