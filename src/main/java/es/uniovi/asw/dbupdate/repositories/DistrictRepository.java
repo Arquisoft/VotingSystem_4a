@@ -1,6 +1,7 @@
 package es.uniovi.asw.dbupdate.repositories;
 
 import es.uniovi.asw.model.District;
+import es.uniovi.asw.model.Region;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -10,5 +11,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface DistrictRepository extends CrudRepository<District, Long> {
 
 	District findByName(String name);
+
+	Iterable<District> findByRegion(Region idRegion);
 
 }
