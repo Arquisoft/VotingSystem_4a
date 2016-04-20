@@ -31,4 +31,17 @@ public class GetVoterP implements GetVoter {
 		return voter;
 	}
 
+	@Override
+	public Voter getVoter(String nif) throws ParametersException {
+
+		if (nif == null || nif.equals("")) {
+			throw new ParametersException("El NIF del votante no es válido");
+		}
+
+		Voter voter = voterRepository.findByNif(nif);
+		VoterVerifier.verify(voter);
+
+		return voter;
+	}
+
 }
