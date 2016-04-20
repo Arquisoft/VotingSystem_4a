@@ -1,7 +1,9 @@
 package es.uniovi.asw.dbupdate.repositories;
 
 import es.uniovi.asw.model.Election;
+import es.uniovi.asw.model.ElectionCall;
 import es.uniovi.asw.model.types.ElectionDateTime;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -11,6 +13,8 @@ import org.springframework.data.repository.CrudRepository;
 public interface ElectionRepository extends CrudRepository<Election, Long> {
 
 	Election findByName(String name);
+
+	Iterable<Election> findByElectionCall(ElectionCall idElectionCall);
 
 	Election findByElectionDateTime(ElectionDateTime electionDateTime);
 
