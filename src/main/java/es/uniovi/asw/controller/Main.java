@@ -2,6 +2,9 @@ package es.uniovi.asw.controller;
 
 import java.util.Collection;
 
+import es.uniovi.asw.dbupdate.ports.GetParametersP;
+import es.uniovi.asw.util.Login;
+import es.uniovi.asw.util.ParametersException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.uniovi.asw.dbupdate.repositories.ElectionRepository;
@@ -24,8 +28,8 @@ public class Main {
 	@Autowired
 	private ElectionRepository electionRepository;
 
-//	@Autowired
-//	private VoterRepository voterRepository;
+	@Autowired
+	private GetParametersP getParametersP;
 
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
@@ -38,17 +42,42 @@ public class Main {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ModelAndView adminIndex() {
-		logger.info("Index junta electoral");
+	public ModelAndView login(@RequestParam(value="email") String email,
+	                          @RequestParam(value="password") String password, Model model) {
+		logger.info("Login");
 
-		return new ModelAndView("index-electoral-board");
+		try {
 
-	}
+			Login login = new Login();
+			Object loginData = login.auth(email, password);
 
-	@RequestMapping(value = "/", method = RequestMethod.POST, params = "get_cand")
-	public ModelAndView showElections(Model model) {
-		model.addAttribute("elecciones", electionRepository.findAll());
-		return new ModelAndView("index-voter");
+			if (loginData == null) {
+				logger.info("User/pass incorrect");
+				model.addAttribute("error", "Usuario y/o password incorrectos");
+				return new ModelAndView("index");
+			}
+
+			else if (loginData instanceof Voter) {
+				logger.info("Login Usuario " + ((Voter) loginData).getName());
+				model.addAttribute("voter", loginData);
+				model.addAttribute("elecciones", getParametersP.getElections(1L));
+				return new ModelAndView("index-voter");
+			}
+
+			else if (loginData instanceof String) {
+				logger.info("Login Junta Electoral");
+				return new ModelAndView("index-electoral-board");
+			}
+
+		}
+
+		catch (ParametersException e) {
+			logger.info("ERROR: " + e.getMessage());
+			model.addAttribute("error", e.getMessage());
+		}
+
+		return new ModelAndView("index");
+
 	}
 
 	@RequestMapping("candidaturas/{id}")
